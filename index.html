@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NetJeeves</title>
+	</head>
+
+	<body>
+		<!-- snmpjs is a pure JavaScript, from-scratch framework for implementing SNMP agents, trap generators, and management applications in Node.js. It is intended primarily to enable the construction of a simple, general-purpose agent as an alternative to Net-SNMP.-->
+		<h1> Hello World!</h1>
+
+		<script type="text/javascript" src="http://joyent.github.io/node-snmpjs/"></script>
+
+		<script type="text/javascript">
+			var os = require('os');
+			var snmp = require('snmpjs');
+			var logger = require('bunyan');
+
+			var log = new logger({
+			    name: 'snmpd',
+			    level: 'info'
+			});
+
+			var agent = snmp.createAgent({
+			    log: log
+			});
+
+			agent.request({ oid: '.1.3.6.1.2.1.1.5', handler: function (prq) {
+			    var nodename = os.hostname();
+			    var val = snmp.data.createData({ type: 'OctetString',
+			        value: nodename });
+
+			    snmp.provider.readOnlyScalar(prq, val);
+			} });
+
+			agent.bind({ family: 'udp4', port: 161 });
+			console.log(os)
+			console.log(snmp)
+			console.log(logger)
+			console.log(log)
+			console.log(agent)
+		</script>
+
+	</body>
+</html>
