@@ -1,5 +1,5 @@
--- [ ] Network Utilization for each device
--- [ ] Upload Speed for each device
--- [ ] Download Speed for each device
--- [ ] MAC address for each device (Currently connected)
--- [ ] Number of processes/tasks and name of program that is running on each device
+- [ ] Network Utilization for each device
+- [ ] Upload Speed for each device
+- [ ] Download Speed for each device
+- [ ] MAC address for each device (Currently connected)
+- [ ] Number of processes/tasks and name of program that is running on each device
